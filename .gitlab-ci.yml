@@ -1,0 +1,51 @@
+image: node:19-alpine
+
+stages:
+  - prepare
+  - build
+  - check
+
+issues:
+  stage: prepare
+  image:
+    name: hub.gitlab.nixdev.co/js/mnt/issue-ci:latest
+    pull_policy: always
+  only:
+    refs:
+      - main
+    # changes:
+    #   - '.gitlab/issues/*.md'
+  script:
+    - /bin/bash -c /bin/issue
+
+build:
+  stage: build
+  script:
+    - yarn
+  cache:
+    paths:
+      - node_modules/
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+    paths:
+      - node_modules/
+
+lint:
+  stage: check
+  dependencies:
+    - build
+  needs: ['build']
+  script:
+    - yarn lint
+
+test:
+  stage: check
+  needs: ['build']
+  only:
+    - main
+    - merge_requests
+  dependencies:
+    - build
+  script:
+    - yarn test
