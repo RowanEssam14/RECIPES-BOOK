@@ -11,5 +11,9 @@ expect(run(2, 3)).toBe(5);
 
 ### Useful liks
 
-- []()
-- []()
+- [Link 1]()
+- [Link 2]()
+
+<!-- Don't forget about labels. Example: -->
+<!-- /label level::elementary -->
+<!-- /label js::array -->
