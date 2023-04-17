@@ -4,6 +4,11 @@ Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labor
 
 ### Test Examples
 
+Look at tests for examples
+[Tests](__tests__/index.spec.js)
+
+or
+
 ```javascript
 expect(run(1, 2)).toBe(3);
 expect(run(2, 3)).toBe(5);
