@@ -5,15 +5,36 @@
   "author": "Nikolay Halkin <mr.galkin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
-    "test": "jest"
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix",
+    "prettier": "prettier --check \"**/*.js\"",
+    "format": "prettier --write \"**/*.js\"",
+    "server": "json-server --watch db.json",
+    "dev": "concurrently --kill-others \"yarn start\" \"yarn server\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "eslint": "^8.38.0",
+    "concurrently": "^8.0.1",
+    "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.7"
+    "html-webpack-plugin": "^5.5.1",
+    "husky": "^8.0.3",
+    "json-server": "^0.17.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.1.0"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
   }
 }

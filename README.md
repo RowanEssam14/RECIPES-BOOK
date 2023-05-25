@@ -2,13 +2,7 @@
 
 - make a fork of this repo
 - clone your own repo to your local machine and open it in VS Code
-  - as you can see there is `.vscode` folder on root directory. VS Code can suggest to install recommended extensions. Do it! These extensions are very useful. Use them!
-    - `todo` highlights special words in your code
-    - `vscode-eslint` integrates ESLint JavaScript into VS Code.
-    - `EditorConfig` extension support `.editorconfig` files
-    - `Prettier` extension is for code formatting
-    - `Git Graph` will help to work with git repo
-    - `Git Ignore` support .gitignore files
+- you have scripts in package.json, you need to run webpack and database json-server with `yarn dev` or `npm run dev` command
 - you can find a task description in this project issues
 - create a separate branch and make your task
 - when you finish a task commit your changes and push your branch

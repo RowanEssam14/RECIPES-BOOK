@@ -1,6 +1,4 @@
-function run() {
-  // TODO: write your code here
-}
+const root = document.querySelector('#root');
 
-// WARN: do not remove this line
-module.exports = run;
+const element = document.createElement('div');
+root.append(element);
