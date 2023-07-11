@@ -5,6 +5,12 @@ stages:
   - build
   - check
 
+# TODO
+# Prepare job created for automatization of writing introduction issues,
+# right now it's failed on student's environments
+# and successfully works on teacher environments
+# but doesn't update the introduction issue
+
 # issues:
 #   stage: prepare
 #   image:
