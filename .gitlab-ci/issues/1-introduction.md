@@ -2,12 +2,12 @@
 
 All styles and position of components you can see at Figma file inside project.
 
-#### Our application consist of 2 part
+## Our application consist of 2 part
 
 - Sidebar
 - Content/Main page
 
-#### Sidebar has two links
+## Sidebar has two links
 
 - All recipes
     When click on this button we must see Main page
@@ -22,11 +22,11 @@ Main page consists of a few parts:
 - Explore recipes
 - Add new recipe button
 
-### Recipes of the day
+## Recipes of the day
 
 - you must take it from server and render list of recipes of the day on the page (Look at special key or array)
 
-### Explore recipes
+## Explore recipes
 
 - it takes also from server and render this list of explore recipes, but explore recipes (they aren't have special key or aren't in different array)
 
