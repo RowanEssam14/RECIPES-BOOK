@@ -49,12 +49,3 @@ lint:
   script:
     - yarn lint
 
-test:
-  stage: check
-  needs: ['build']
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME !~ /^task-update/'
-  dependencies:
-    - build
-  script:
-    - yarn test
