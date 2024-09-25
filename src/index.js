@@ -1,7 +1,19 @@
 import './index.css';
 
-const root = document.querySelector('#root');
+const { fetchPopularRecipes, fetchExploreRecipes } = require('./utils');
 
-const element = document.createElement('div');
+const overlay = document.querySelector('.overlay');
+const cards = document.querySelectorAll('.card');
 
-root.append(element);
+function showOverlay() {
+  overlay.style.display = 'block';
+  overlay.style.overflow = 'scroll';
+  document.body.style.overflow = 'hidden';
+}
+
+cards.forEach((card) => {
+  card.addEventListener('click', showOverlay);
+});
+
+fetchPopularRecipes();
+fetchExploreRecipes();

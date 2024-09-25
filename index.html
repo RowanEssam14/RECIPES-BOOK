@@ -6,6 +6,119 @@
 
   <body>
     <div id="root">
+      <div class="sidebar">
+        <aside class="nav">
+          <ul class="nav-list list">
+            <li class="nav-item">
+              <span class="visually-hidden">All Recipes</span>
+              <a href="#" class="nav-link">
+                <span class="nav-icon icon icon-recipes"></span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <span class="visually-hidden">Favourite Recipes</span>
+              <a href="#" class="nav-link">
+                <span class="nav-icon icon icon-favourite-recipes"></span>
+              </a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="main">
+        <header class="main-header">
+          <h1 class="main-header-title title">RECIPES</h1>
+          <button type="button" class="button button-add-recipe">+ ADD NEW RECIPE</button>
+        </header>
+        <div class="main-content">
+          <section class="main-section">
+            <h2 class="main-section-title">RECIPE OF THE DAY</h2>
+            <div class="main-section-recipes">
+              <div class="card">
+                <div class="card-actions">
+                  <span class="card-action action-favourite" aria-label="Add to Favorites"></span>
+                  <span class="card-action action-edit" aria-label="Edit Recipe"></span>
+                  <span class="card-action action-delete" aria-label="Delete Recipe"></span>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Name</h3>
+                  <div class="card-details">
+                    <ul class="list card-list">
+                      <li class="card-list-item">
+                        <span class="card-list-info">10 ingredients</span>
+                      </li>
+                      <li class="card-list-item">
+                        <span class="card-list-info">45 min.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="main-section">
+            <h2 class="main-section-title">EXPLORE RECIPES</h2>
+            <div class="main-section-explore">
+              <div class="card">
+                <div class="card-actions">
+                  <span class="card-action action-favourite" aria-label="Add to Favorites"></span>
+                  <span class="card-action action-edit" aria-label="Edit Recipe"></span>
+                  <span class="card-action action-delete" aria-label="Delete Recipe"></span>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Name</h3>
+                  <div class="card-details">
+                    <ul class="list card-list">
+                      <li class="card-list-item">
+                        <span class="card-list-info">10 ingredients</span>
+                      </li>
+                      <li class="card-list-item">
+                        <span class="card-list-info">45 min.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay">
+      <div class="overlay-media">
+        <img class="overlay-image" />
+      </div>
+      <span class="close-overlay"></span>
+
+      <div class="overlay-body">
+        <div class="overlay-info">
+          <div class="overlay-title-wrapper">
+            <h3 class="overlay-title">RECIPE</h3>
+            <strong class="overlay-time">45 min.</strong>
+          </div>
+          <p class="overlay-description">
+            Description Description Description Description Description Description Description Description Description
+          </p>
+        </div>
+        <div class="overlay-ingredients">
+          <h3 class="overlay-ingredients-title">INGREDIENTS</h3>
+          <ul class="list">
+            <li class="overlay-list-item">Ingredient 1</li>
+            <li class="overlay-list-item">Ingredient 2</li>
+            <li class="overlay-list-item">Ingredient 3</li>
+            <li class="overlay-list-item">Ingredient 4</li>
+            <li class="overlay-list-item">Ingredient 5</li>
+            <li class="overlay-list-item">Ingredient 6</li>
+          </ul>
+        </div>
+
+        <div class="overlay-actions">
+          <span class="overlay-action action-favourite" aria-label="Add to Favorites"></span>
+          <span class="overlay-action action-edit" aria-label="Edit Recipe"></span>
+          <span class="overlay-action action-delete" aria-label="Delete Recipe"></span>
+        </div>
+      </div>
     </div>
   </body>
 </html>
