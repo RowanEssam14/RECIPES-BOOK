@@ -1,19 +1,17 @@
 import './index.css';
 
-const { fetchPopularRecipes, fetchExploreRecipes } = require('./utils');
+import { fetchPopularRecipes, fetchExploreRecipes, addCardEventListeners } from './api';
+import { Sidebar, PopularRecipes, ExploreRecipes } from './components';
 
-const overlay = document.querySelector('.overlay');
-const cards = document.querySelectorAll('.card');
+document.addEventListener('DOMContentLoaded', async () => {
+  const root = document.querySelector('#root');
+  const mainContentContainer = document.querySelector('.main-content');
 
-function showOverlay() {
-  overlay.style.display = 'block';
-  overlay.style.overflow = 'scroll';
-  document.body.style.overflow = 'hidden';
-}
+  const popularRecipes = await fetchPopularRecipes();
+  const exploreRecipes = await fetchExploreRecipes();
+  root.insertAdjacentHTML('afterbegin', Sidebar());
+  mainContentContainer.insertAdjacentHTML('beforeend', PopularRecipes(popularRecipes));
+  mainContentContainer.insertAdjacentHTML('beforeend', ExploreRecipes(exploreRecipes));
 
-cards.forEach((card) => {
-  card.addEventListener('click', showOverlay);
+  addCardEventListeners();
 });
-
-fetchPopularRecipes();
-fetchExploreRecipes();
