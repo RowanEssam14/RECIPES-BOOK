@@ -1,9 +1,9 @@
 import Cards from './Cards';
 
-export default function PopularRecipes(recipes) {
+export default function Recipes(recipes, title = '') {
   return `
     <section class="main-section">
-    <h2 class="main-section-title">RECIPE OF THE DAY</h2>
+    ${title ? `<h2 class="main-section-title">${title}</h2>` : ''}
       <div class="main-section-recipes">
         ${Cards(recipes)}
       </div>

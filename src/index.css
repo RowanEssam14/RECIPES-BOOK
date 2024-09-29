@@ -240,8 +240,7 @@ body {
   color: rgba(68, 69, 79, 0.5);
 }
 
-.main-section-recipes,
-.main-section-explore {
+.main-section-recipes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
