@@ -1,5 +1,31 @@
-export default function Cards(recipes) {
-  return recipes
+import { fetchRecipeDetails } from '../api';
+import { RecipeDetails, showOverlay, addCloseButtonEventListner } from './RecipeDetails';
+
+function addCardEventListeners() {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => {
+    card.addEventListener('click', async () => {
+      const recipeId = card.getAttribute('data-id');
+      const { recipe, ingredients } = await fetchRecipeDetails(recipeId);
+
+      // Clear previous recipe details
+      const existingOverlay = document.querySelector('.overlay');
+      if (existingOverlay) {
+        existingOverlay.remove(); // Remove the old overlay
+      }
+
+      const recipeDetailsHTML = RecipeDetails(recipe, ingredients);
+      const mainContentContainer = document.querySelector('.main-content');
+      mainContentContainer.insertAdjacentHTML('beforeend', recipeDetailsHTML);
+
+      showOverlay();
+      addCloseButtonEventListner();
+    });
+  });
+}
+
+function Cards(recipes) {
+  const cardsHTML = recipes
     .map(
       (recipe) => `
     <div class="card" data-id="${recipe.id}">
@@ -25,4 +51,8 @@ export default function Cards(recipes) {
   `
     )
     .join('');
+
+  return cardsHTML;
 }
+
+export { Cards, addCardEventListeners };

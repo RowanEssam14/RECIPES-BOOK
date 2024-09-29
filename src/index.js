@@ -1,7 +1,7 @@
 import './index.css';
 
-import { fetchRecipes, addCardEventListeners } from './api';
-import { Sidebar, Recipes } from './components';
+import { fetchRecipes } from './api';
+import { Sidebar, Recipes, RecipeDetails, addCloseButtonEventListner, addCardEventListeners } from './components';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const root = document.querySelector('#root');
@@ -15,5 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   mainContentContainer.insertAdjacentHTML('beforeend', Recipes(popularRecipes, 'RECIPE OF THE DAY'));
   mainContentContainer.insertAdjacentHTML('beforeend', Recipes(exploreRecipes, 'EXPLORE RECIPES'));
 
+  mainContentContainer.insertAdjacentHTML('beforeend', RecipeDetails());
+  addCloseButtonEventListner();
   addCardEventListeners();
 });
