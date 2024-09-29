@@ -3,7 +3,10 @@ import { RecipeDetails, showOverlay, addCloseButtonEventListner } from './Recipe
 
 function addCardEventListeners() {
   const cards = document.querySelectorAll('.card');
+  const modal = document.querySelector('.delete-modal');
+
   cards.forEach((card) => {
+    // Event listener for card click (to show recipe details)
     card.addEventListener('click', async () => {
       const recipeId = card.getAttribute('data-id');
       const { recipe, ingredients } = await fetchRecipeDetails(recipeId);
@@ -21,11 +24,18 @@ function addCardEventListeners() {
       showOverlay();
       addCloseButtonEventListner();
     });
+
+    // Event listener for delete action
+    const deleteButton = card.querySelector('.action-delete');
+    deleteButton.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent triggering the card click event
+      modal.style.display = 'flex'; // Show the delete modal
+    });
   });
 }
 
 function Cards(recipes) {
-  const cardsHTML = recipes
+  return recipes
     .map(
       (recipe) => `
     <div class="card" data-id="${recipe.id}">
@@ -51,8 +61,6 @@ function Cards(recipes) {
   `
     )
     .join('');
-
-  return cardsHTML;
 }
 
 export { Cards, addCardEventListeners };
