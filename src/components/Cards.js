@@ -1,12 +1,12 @@
 import { fetchRecipeDetails } from '../api';
 import { RecipeDetails, showOverlay, addCloseButtonEventListner } from './RecipeDetails';
+import { DeleteModal, addDeleteModalEventListeners } from './modals/DeleteModal';
 
 function addCardEventListeners() {
   const cards = document.querySelectorAll('.card');
-  const modal = document.querySelector('.delete-modal');
+  const mainContentContainer = document.querySelector('.main-content');
 
   cards.forEach((card) => {
-    // Event listener for card click (to show recipe details)
     card.addEventListener('click', async () => {
       const recipeId = card.getAttribute('data-id');
       const { recipe, ingredients } = await fetchRecipeDetails(recipeId);
@@ -18,7 +18,6 @@ function addCardEventListeners() {
       }
 
       const recipeDetailsHTML = RecipeDetails(recipe, ingredients);
-      const mainContentContainer = document.querySelector('.main-content');
       mainContentContainer.insertAdjacentHTML('beforeend', recipeDetailsHTML);
 
       showOverlay();
@@ -29,7 +28,14 @@ function addCardEventListeners() {
     const deleteButton = card.querySelector('.action-delete');
     deleteButton.addEventListener('click', (event) => {
       event.stopPropagation(); // Prevent triggering the card click event
-      modal.style.display = 'flex'; // Show the delete modal
+      const recipeId = card.getAttribute('data-id');
+      mainContentContainer.insertAdjacentHTML('beforeend', DeleteModal(recipeId));
+      addDeleteModalEventListeners();
+
+      const deleteModalContainer = document.querySelector('.delete-modal');
+
+      deleteModalContainer.style.display = 'flex'; // Show the modal
+      addDeleteModalEventListeners();
     });
   });
 }

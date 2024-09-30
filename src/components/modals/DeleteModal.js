@@ -1,4 +1,6 @@
-function DeleteModal() {
+import { deleteRecipe } from '../../api';
+
+function DeleteModal(recipeId) {
   return `
     <div class="delete-modal">
       <div class="modal-header">
@@ -10,7 +12,9 @@ function DeleteModal() {
           Are you sure you want to delete this recipe?
         </p>
         <button class="button modal-button cancel-button">CANCEL</button>
-        <button class="button modal-button delete-button">YES, DELETE</button>
+        <button class="button modal-button delete-button" data-id="${recipeId}">
+          YES, DELETE
+        </button>
       </div>
     </div>
   `;
@@ -25,5 +29,21 @@ function addDeleteModalEventListeners() {
       deleteModal.style.display = 'none';
     });
   });
+
+  // Event listener for the delete button
+  const deleteButton = deleteModal.querySelector('.delete-button');
+  if (deleteButton) {
+    deleteButton.addEventListener('click', async () => {
+      const recipeId = deleteButton.getAttribute('data-id'); // Get the recipeId
+      try {
+        await deleteRecipe(recipeId);
+        deleteModal.style.display = 'none'; // Close the modal after deletion
+        window.location.reload();
+      } catch (error) {
+        throw new Error(error);
+      }
+    });
+  }
 }
+
 export { addDeleteModalEventListeners, DeleteModal };
