@@ -1,4 +1,4 @@
-import { deleteRecipe } from '../../api';
+import { deleteRecipe } from '../api';
 
 function DeleteModal(recipeId) {
   return `

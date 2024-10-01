@@ -38,21 +38,19 @@ function RecipeDetails(recipe, ingredients) {
   `;
 }
 
-function addCloseButtonEventListner() {
-  const closeOverlayButton = document.querySelector('.close-overlay');
-  if (closeOverlayButton) {
-    closeOverlayButton.addEventListener('click', () => {
-      const overlay = document.querySelector('.overlay');
-      overlay.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    });
+function toggleOverlay(show) {
+  const overlay = document.querySelector('.overlay');
+  if (overlay) {
+    overlay.style.display = show ? 'block' : 'none';
+    document.body.style.overflow = show ? 'hidden' : 'auto';
   }
 }
 
-function showOverlay() {
-  const overlay = document.querySelector('.overlay');
-  overlay.style.display = 'block';
-  document.body.style.overflow = 'hidden';
+function addCloseButtonEventListener() {
+  const closeOverlayButton = document.querySelector('.close-overlay');
+  if (closeOverlayButton) {
+    closeOverlayButton.addEventListener('click', () => toggleOverlay(false));
+  }
 }
 
-export { RecipeDetails, addCloseButtonEventListner, showOverlay };
+export { RecipeDetails, addCloseButtonEventListener, toggleOverlay };

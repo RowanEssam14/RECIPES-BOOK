@@ -1,15 +1,6 @@
-import { RecipeDetails, addCloseButtonEventListner, showOverlay } from './RecipeDetails';
+import Sidebar from './Sidebar';
+import Recipes from './Recipes';
+import { RecipeDetails, addCloseButtonEventListener, toggleOverlay } from './RecipeDetails';
 import { addCardEventListeners, Cards } from './Cards';
-import { DeleteModal, addDeleteModalEventListeners } from './modals/DeleteModal';
 
-export {
-  RecipeDetails,
-  addCloseButtonEventListner,
-  showOverlay,
-  addCardEventListeners,
-  Cards,
-  DeleteModal,
-  addDeleteModalEventListeners,
-};
-export { default as Sidebar } from './Sidebar';
-export { default as Recipes } from './Recipes';
+export { Sidebar, Recipes, RecipeDetails, addCloseButtonEventListener, toggleOverlay, addCardEventListeners, Cards };
