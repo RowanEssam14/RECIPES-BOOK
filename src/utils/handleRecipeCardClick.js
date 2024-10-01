@@ -1,5 +1,10 @@
 import { fetchRecipeDetails } from '../api';
-import { RecipeDetails, toggleOverlay, addCloseButtonEventListener } from '../components/RecipeDetails';
+import {
+  renderRecipeDetails,
+  toggleOverlay,
+  addCloseButtonEventListener,
+  addRecipeDetailsEventListeners,
+} from './renderRecipeDetails';
 
 export default async function handleRecipeCardClick(card, mainContentContainer) {
   const recipeId = card.getAttribute('data-id');
@@ -11,9 +16,8 @@ export default async function handleRecipeCardClick(card, mainContentContainer) 
   if (existingOverlay) {
     existingOverlay.remove(); // Remove the old overlay
   }
-
-  const recipeDetailsHTML = RecipeDetails(recipe, ingredients);
-  mainContentContainer.insertAdjacentHTML('beforeend', recipeDetailsHTML);
+  mainContentContainer.insertAdjacentHTML('beforeend', renderRecipeDetails(recipe, ingredients));
+  addRecipeDetailsEventListeners(recipeId);
 
   toggleOverlay(true);
   addCloseButtonEventListener();

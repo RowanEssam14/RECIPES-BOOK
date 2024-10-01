@@ -1,4 +1,6 @@
-function RecipeDetails(recipe, ingredients) {
+import handleDeleteButtonClick from './handleDeleteButtonClick';
+
+function renderRecipeDetails(recipe, ingredients) {
   if (!recipe) return '';
 
   return `
@@ -30,7 +32,7 @@ function RecipeDetails(recipe, ingredients) {
           <div class="overlay-actions">
             <span class="overlay-action action-favourite" aria-label="Add to Favorites"></span>
             <span class="overlay-action action-edit" aria-label="Edit Recipe"></span>
-            <span class="overlay-action action-delete" aria-label="Delete Recipe"></span>
+            <span class="overlay-action action-delete" aria-label="Delete Recipe" data-id="${recipe.id}"></span>
           </div>
         </div>
       </div>
@@ -52,5 +54,12 @@ function addCloseButtonEventListener() {
     closeOverlayButton.addEventListener('click', () => toggleOverlay(false));
   }
 }
+function addRecipeDetailsEventListeners(recipeId) {
+  const deleteButton = document.querySelector(`.action-delete[data-id="${recipeId}"]`);
+  if (deleteButton) {
+    handleDeleteButtonClick(deleteButton, recipeId);
+  }
+  addCloseButtonEventListener();
+}
 
-export { RecipeDetails, addCloseButtonEventListener, toggleOverlay };
+export { renderRecipeDetails, addCloseButtonEventListener, addRecipeDetailsEventListeners, toggleOverlay };
