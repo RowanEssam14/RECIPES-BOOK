@@ -1,4 +1,4 @@
-export default function addRecipeModal() {
+export default function AddRecipeModal() {
   return `        <div class="modal addRecipe-modal">
           <div class="modal-body">
             <button class="button modal-close-button" aria-label="Close"></button>

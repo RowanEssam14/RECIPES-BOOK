@@ -2,7 +2,7 @@ import { deleteRecipe } from '../api';
 
 function DeleteModal(recipeId) {
   return `
-    <div class="delete-modal">
+    <div class="modal delete-modal">
       <div class="modal-header">
         <button class="button modal-close-button" aria-label="Close"></button>
       </div>
@@ -22,11 +22,11 @@ function DeleteModal(recipeId) {
 
 function addDeleteModalEventListeners() {
   const deleteModal = document.querySelector('.delete-modal');
-  const closeButtons = deleteModal.querySelectorAll('.modal-close-button, .cancel-button');
+  const closeButtons = deleteModal.querySelectorAll(' .modal-close-button, .cancel-button');
 
   closeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      deleteModal.style.display = 'none';
+      deleteModal.remove();
     });
   });
 
@@ -37,7 +37,7 @@ function addDeleteModalEventListeners() {
       const recipeId = deleteButton.getAttribute('data-id'); // Get the recipeId
       try {
         await deleteRecipe(recipeId);
-        deleteModal.style.display = 'none'; // Close the modal after deletion
+        deleteModal.remove();
         window.location.reload();
       } catch (error) {
         throw new Error(error);
