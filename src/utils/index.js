@@ -7,6 +7,7 @@ import {
   addRecipeDetailsEventListeners,
   toggleOverlay,
 } from './renderRecipeDetails';
+import addRecipeModal from './addRecipeModal';
 
 export {
   handleDeleteButtonClick,
@@ -17,4 +18,5 @@ export {
   addCloseButtonEventListener,
   addRecipeDetailsEventListeners,
   toggleOverlay,
+  addRecipeModal,
 };
