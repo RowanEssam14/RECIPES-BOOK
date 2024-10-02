@@ -9,6 +9,7 @@ import {
 } from './renderRecipeDetails';
 
 import addCloseModalEventListener from './handleModalButtons';
+import handleRecipeFormSubmission from './handleRecipeFormSubmission';
 
 export {
   handleDeleteButtonClick,
@@ -20,4 +21,5 @@ export {
   addRecipeDetailsEventListeners,
   toggleOverlay,
   addCloseModalEventListener,
+  handleRecipeFormSubmission,
 };

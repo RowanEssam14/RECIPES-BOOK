@@ -1,6 +1,6 @@
 import Sidebar from './Sidebar';
 import Recipes from './Recipes';
-import AddRecipeModal from './AddRecipeModal';
+import { AddRecipeModal, addNewIngredientEventListener } from './AddRecipeModal';
 import { addCardEventListeners, Cards } from './Cards';
 
-export { AddRecipeModal, Sidebar, Recipes, addCardEventListeners, Cards };
+export { AddRecipeModal, addNewIngredientEventListener, Sidebar, Recipes, addCardEventListeners, Cards };

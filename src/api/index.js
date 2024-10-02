@@ -1,3 +1,7 @@
-export { default as fetchRecipes } from './fetchRecipes';
-export { default as fetchRecipeDetails } from './recipeDetails';
-export { default as deleteRecipe } from './deleteRecipe';
+import addRecipe from './addRecipe';
+import fetchRecipes from './fetchRecipes';
+import fetchIngredients from './fetchIngredients';
+import fetchRecipeDetails from './recipeDetails';
+import deleteRecipe from './deleteRecipe';
+
+export { fetchRecipes, fetchIngredients, fetchRecipeDetails, deleteRecipe, addRecipe };

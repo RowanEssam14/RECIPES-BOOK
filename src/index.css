@@ -429,9 +429,10 @@ body {
 /*-------------------------------------------------
 Delete Modal
 ---------------------------------------------------*/
-.delete-modal{
+.delete-modal {
   display: flex;
 }
+
 .delete-modal .modal-header {
   position: relative;
   width: 625px;
@@ -484,6 +485,7 @@ Delete Modal
   border-radius: 10px;
   overflow: scroll;
   padding: 53px 72px 48px 72px;
+  max-height: 761px;
 }
 
 .addRecipe-modal .modal-title {
