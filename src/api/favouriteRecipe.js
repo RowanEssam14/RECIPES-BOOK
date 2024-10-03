@@ -1,7 +1,4 @@
 export default async function favouriteRecipe(id, isFavorite) {
-  if (isFavorite === false) {
-    console.log(` INSIDE API:${id}, isFavorite: ${isFavorite}, negated: ${!isFavorite}`);
-  }
   const updateResponse = await fetch(`http://localhost:3000/recipes/${id}`, {
     method: 'PATCH',
     headers: {

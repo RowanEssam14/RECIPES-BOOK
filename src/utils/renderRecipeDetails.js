@@ -36,7 +36,7 @@ function renderRecipeDetails(recipe, ingredients) {
             class="overlay-action action-favourite ${recipe.isFavorite ? 'favourited' : ''}"
             aria-label="Add to Favorites"
             data-id="${recipe.id}"
-            data-is-favourite="${recipe.isFavorite}" ${console.log(`INSIDE HTML : ${recipe.isFavorite}`)}"></
+            data-is-favourite="${recipe.isFavorite}"></
           ></span>
           <span
             class="overlay-action action-edit"
@@ -71,7 +71,6 @@ function addRecipeDetailsEventListeners(recipeId) {
   const deleteButton = document.querySelector(`.action-delete[data-id="${recipeId}"]`);
   const favouriteButton = document.querySelector(`.overlay .action-favourite[data-id="${recipeId}"]`);
   const isFavorite = favouriteButton.getAttribute('data-is-favourite') === 'true';
-  console.log(`INSIDE EVENT LISTENER: isFavorite: ${isFavorite} `);
 
   if (deleteButton) {
     handleDeleteButtonClick(deleteButton, recipeId);
