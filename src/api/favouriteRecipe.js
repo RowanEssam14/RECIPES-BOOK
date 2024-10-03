@@ -1,31 +1,20 @@
-async function fetchRecipeById(id) {
-  const response = await fetch(`http://localhost:3000/recipes/${id}`);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch recipe with ID: ${id}`);
-  }
-  const recipe = await response.json();
-  return recipe;
-}
-
-export default async function favouriteRecipe(id) {
+export default async function favouriteRecipe(id, isFavorite = false) {
   try {
-    const recipe = await fetchRecipeById(id);
-    recipe.isFavorite = !recipe.isFavorite;
-
     const updateResponse = await fetch(`http://localhost:3000/recipes/${id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(recipe),
+      body: JSON.stringify({ isFavorite }),
     });
 
     if (!updateResponse.ok) {
       throw new Error(`Failed to update recipe with ID: ${id}`);
     }
 
-    await updateResponse.json();
+    const updatedRecipe = await updateResponse.json();
+    return updatedRecipe;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 }
