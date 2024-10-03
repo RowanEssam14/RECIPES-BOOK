@@ -1,4 +1,4 @@
-import { handleRecipeCardClick, handleDeleteButtonClick } from '../utils';
+import { handleRecipeCardClick, handleDeleteButtonClick, handleFavouriteClick } from '../utils';
 
 function addCardEventListeners() {
   const cards = document.querySelectorAll('.card');
@@ -13,6 +13,10 @@ function addCardEventListeners() {
 
     const deleteButton = card.querySelector('.action-delete');
     handleDeleteButtonClick(deleteButton, recipeId);
+
+    // Favourite button click event
+    const favouriteButton = card.querySelector('.action-favourite');
+    handleFavouriteClick(favouriteButton, recipeId);
   });
 }
 
@@ -22,7 +26,9 @@ function Cards(recipes) {
       (recipe) => `
     <div class="card" data-id="${recipe.id}">
       <div class="card-actions">
-        <span class="card-action action-favourite" aria-label="Add to Favorites"></span>
+        <span class="card-action action-favourite ${
+          recipe.isFavorite ? 'favourited' : ''
+        }" aria-label="Add to Favorites"></span>
         <span class="card-action action-edit" aria-label="Edit Recipe"></span>
         <span class="card-action action-delete" aria-label="Delete Recipe"></span>
       </div>

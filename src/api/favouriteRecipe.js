@@ -10,7 +10,7 @@ async function fetchRecipeById(id) {
 export default async function favouriteRecipe(id) {
   try {
     const recipe = await fetchRecipeById(id);
-    recipe.isFavorite = true;
+    recipe.isFavorite = !recipe.isFavorite;
 
     const updateResponse = await fetch(`http://localhost:3000/recipes/${id}`, {
       method: 'PUT',

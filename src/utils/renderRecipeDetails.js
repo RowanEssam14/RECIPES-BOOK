@@ -1,4 +1,5 @@
 import handleDeleteButtonClick from './handleDeleteButtonClick';
+import handleFavouriteClick from './handleFavouriteClick';
 
 function renderRecipeDetails(recipe, ingredients) {
   if (!recipe) return '';
@@ -30,8 +31,10 @@ function renderRecipeDetails(recipe, ingredients) {
           </div>
 
           <div class="overlay-actions">
-            <span class="overlay-action action-favourite" aria-label="Add to Favorites"></span>
-            <span class="overlay-action action-edit" aria-label="Edit Recipe"></span>
+            <span class="overlay-action action-favourite ${
+              recipe.isFavorite ? 'favourited' : ''
+            }" aria-label="Add to Favorites" data-id="${recipe.id}"></span>
+            <span class="overlay-action action-edit" aria-label="Edit Recipe" ></span>
             <span class="overlay-action action-delete" aria-label="Delete Recipe" data-id="${recipe.id}"></span>
           </div>
         </div>
@@ -56,8 +59,12 @@ function addCloseButtonEventListener() {
 }
 function addRecipeDetailsEventListeners(recipeId) {
   const deleteButton = document.querySelector(`.action-delete[data-id="${recipeId}"]`);
+  const favouriteButton = document.querySelector(`.action-favourite[data-id="${recipeId}"]`);
   if (deleteButton) {
     handleDeleteButtonClick(deleteButton, recipeId);
+  }
+  if (favouriteButton) {
+    handleFavouriteClick(favouriteButton, recipeId);
   }
   addCloseButtonEventListener();
 }

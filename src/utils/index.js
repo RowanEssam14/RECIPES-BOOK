@@ -1,4 +1,5 @@
 import handleDeleteButtonClick from './handleDeleteButtonClick';
+import handleFavouriteClick from './handleFavouriteClick';
 import handleRecipeCardClick from './handleRecipeCardClick';
 import { addDeleteModalEventListeners, DeleteModal } from './createDeleteModal';
 import {
@@ -13,6 +14,7 @@ import handleRecipeFormSubmission from './handleRecipeFormSubmission';
 
 export {
   handleDeleteButtonClick,
+  handleFavouriteClick,
   handleRecipeCardClick,
   addDeleteModalEventListeners,
   DeleteModal,
