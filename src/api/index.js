@@ -3,5 +3,6 @@ import fetchRecipes from './fetchRecipes';
 import fetchIngredients from './fetchIngredients';
 import fetchRecipeDetails from './recipeDetails';
 import deleteRecipe from './deleteRecipe';
+import favouriteRecipe from './favouriteRecipe';
 
-export { fetchRecipes, fetchIngredients, fetchRecipeDetails, deleteRecipe, addRecipe };
+export { fetchRecipes, fetchIngredients, fetchRecipeDetails, deleteRecipe, addRecipe, favouriteRecipe };
