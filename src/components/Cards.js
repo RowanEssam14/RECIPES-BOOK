@@ -16,7 +16,8 @@ function addCardEventListeners() {
 
     // Favourite button click event
     const favouriteButton = card.querySelector('.action-favourite');
-    handleFavouriteClick(favouriteButton, recipeId);
+    const isFavorite = favouriteButton.getAttribute('data-is-favourite') === 'true';
+    handleFavouriteClick(favouriteButton, recipeId, isFavorite);
   });
 }
 
@@ -28,7 +29,8 @@ function Cards(recipes) {
       <div class="card-actions">
         <span class="card-action action-favourite ${
           recipe.isFavorite ? 'favourited' : ''
-        }" aria-label="Add to Favorites"></span>
+        }" aria-label="Add to Favorites" data-id="${recipe.id}"
+            data-is-favourite="${recipe.isFavorite}"></span>
         <span class="card-action action-edit" aria-label="Edit Recipe"></span>
         <span class="card-action action-delete" aria-label="Delete Recipe"></span>
       </div>
