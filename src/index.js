@@ -1,14 +1,7 @@
 import './index.css';
 import { fetchRecipes, fetchIngredients } from './api';
-import {
-  AddRecipeModal,
-  Sidebar,
-  Recipes,
-  addCardEventListeners,
-  addNewIngredientEventListener,
-  Header,
-} from './components';
-import { addCloseModalEventListener, handleRecipeFormSubmission } from './utils';
+import { Sidebar, Header, Recipes, RecipeModal, addCardEventListeners } from './components';
+import { addCloseModalEventListener, handleRecipeFormSubmission, addNewIngredientEventListener } from './utils';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const root = document.querySelector('#root');
@@ -39,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Add Recipe Modal Event Listener
   document.querySelector('.button-add-recipe').addEventListener('click', () => {
-    mainContentContainer.insertAdjacentHTML('beforeend', AddRecipeModal(ingredients, units));
+    mainContentContainer.insertAdjacentHTML('beforeend', RecipeModal(ingredients, units, {}));
     addCloseModalEventListener();
     addNewIngredientEventListener(ingredients, units);
     handleRecipeFormSubmission();

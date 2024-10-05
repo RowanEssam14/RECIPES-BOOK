@@ -11,7 +11,8 @@ import {
 } from './renderRecipeDetails';
 
 import addCloseModalEventListener from './handleModalButtons';
-import handleRecipeFormSubmission from './handleRecipeFormSubmission';
+import handleRecipeFormSubmission from './handleAddRecipeFormSubmission';
+import { generateIngredientsList, addNewIngredientEventListener } from './forms/generateIngredientsList';
 
 export {
   handleDeleteButtonClick,
@@ -26,4 +27,6 @@ export {
   toggleOverlay,
   addCloseModalEventListener,
   handleRecipeFormSubmission,
+  generateIngredientsList,
+  addNewIngredientEventListener,
 };
