@@ -129,7 +129,8 @@ body {
   color: #ebc060;
 }
 
-.button-add-recipe {
+.button-add-recipe,
+.button-edit-recipe {
   width: 297px;
   height: 61px;
   font-size: 24px;
@@ -139,7 +140,8 @@ body {
   border-radius: 10px;
 }
 
-.button-add-recipe:hover {
+.button-add-recipe:hover,
+.button-edit-recipe:hover {
   background: #ffb000;
 }
 
@@ -218,11 +220,13 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.31877 28.9999C5.43752 30.8687 6.67502 31.9999 8.56877 31.9999H23.2938C25.45 31.9999 26.5875 30.8937 26.7188 28.7499C27.0688 22.9749 27.9188 8.89365 27.9813 7.74365H4.05627C4.05627 7.99365 4.89377 22.2374 5.31877 28.9999Z' fill='white'/%3E%3Cpath d='M27.9563 2.05625C26.2625 2.04375 24.575 2.03125 22.8875 2.0625C22.7875 0.9 21.8125 0 20.6438 0H11.3563C10.1875 0 9.21252 0.9 9.11877 2.0625C7.38127 2.03125 5.63752 2.04375 3.90002 2.05625C2.98752 2.06875 2.32502 2.575 2.10627 3.375C1.72502 4.76875 2.56877 5.91875 4.01252 5.925C8.01877 5.9375 12.0188 5.93125 16.0188 5.93125H27.9438C29.2375 5.93125 29.9813 5.20625 29.9875 4C29.9938 2.79375 29.2438 2.0625 27.9563 2.05625Z' fill='white'/%3E%3C/svg%3E%0A");
 }
 
-.action-favourite:hover , .action-favourite.favourited {
+.action-favourite:hover,
+.action-favourite.favourited {
   background: #ffeeca;
 }
 
-.action-favourite:hover::before, .action-favourite.favourited::before {
+.action-favourite:hover::before,
+.action-favourite.favourited::before {
   background-image: url("data:image/svg+xml,%3Csvg width='26' height='34' viewBox='0 0 26 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25.0671 34V3.44775C25.0671 2.53335 24.7039 1.6564 24.0573 1.00982C23.4107 0.363244 22.5338 0 21.6194 0H4.38062C3.46622 0 2.58927 0.363244 1.94269 1.00982C1.29611 1.6564 0.932869 2.53335 0.932869 3.44775V34L13 26.1202L25.0671 34ZM6.1045 10.3433L10.7021 9.7692L13 5.17163L15.2979 9.7692L19.8955 10.3433L16.0633 13.5997L17.5976 18.9626L13 15.8976L8.40242 18.9626L9.93667 13.5997L6.1045 10.3433Z' fill='%23EBC060'/%3E%3C/svg%3E%0A");
 }
 
@@ -475,7 +479,8 @@ Delete Modal
     Add Recipe Modal
 ---------------------------------------------------*/
 
-.addRecipe-modal .modal-body {
+.addRecipe-modal .modal-body,
+.editRecipe-modal .modal-body {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -488,15 +493,18 @@ Delete Modal
   max-height: 761px;
 }
 
-.addRecipe-modal .modal-title {
+.addRecipe-modal .modal-title,
+.editRecipe-modal .modal-title {
   margin-bottom: 25px;
 }
 
-.addRecipe-modal .modal-form {
+.addRecipe-modal .modal-form,
+.editRecipe-modal .modal-form {
   width: 100%;
 }
 
-.addRecipe-modal .form-group {
+.addRecipe-modal .form-group,
+.editRecipe-modal .form-group {
   display: grid;
   grid-template-columns: 3fr 1fr;
   font-size: 24px;
@@ -504,18 +512,21 @@ Delete Modal
   gap: 48px;
 }
 
-.addRecipe-modal .form-field {
+.addRecipe-modal .form-field,
+.editRecipe-modal .form-field {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
 }
 
-.addRecipe-modal .form-label {
+.addRecipe-modal .form-label,
+.editRecipe-modal .form-label {
   margin-bottom: 16px;
   color: #afb1c0;
 }
 
-.addRecipe-modal .form-input {
+.addRecipe-modal .form-input,
+.editRecipe-modal .form-input {
   min-height: 77px;
   border-radius: 10px;
   border-color: rgba(175, 177, 192, 0.5);
@@ -523,10 +534,19 @@ Delete Modal
 }
 
 .addRecipe-modal .form-input,
-.addRecipe-modal .form-input::placeholder {
+.editRecipe-modal .form-input,
+.addRecipe-modal .form-input::placeholder,
+.editRecipe-modal .form-input::placeholder {
   padding-left: 22px;
   font-size: 24px;
+}
+
+.addRecipe-modal .form-input::placeholder {
   color: #afb1c0;
+}
+
+.editRecipe-modal .form-input::placeholder {
+  color: #1c1c1c;
 }
 
 .description-input,

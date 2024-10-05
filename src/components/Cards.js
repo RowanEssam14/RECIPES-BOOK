@@ -1,4 +1,4 @@
-import { handleRecipeCardClick, handleDeleteButtonClick, handleFavouriteClick } from '../utils';
+import { handleRecipeCardClick, handleDeleteButtonClick, handleFavouriteClick, handleEditClick } from '../utils';
 
 function addCardEventListeners() {
   const cards = document.querySelectorAll('.card');
@@ -18,6 +18,9 @@ function addCardEventListeners() {
     const favouriteButton = card.querySelector('.action-favourite');
     const isFavorite = favouriteButton.getAttribute('data-is-favourite') === 'true';
     handleFavouriteClick(favouriteButton, recipeId, isFavorite);
+
+    const editButton = card.querySelector('.action-edit');
+    handleEditClick(editButton, recipeId);
   });
 }
 

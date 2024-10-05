@@ -1,24 +1,19 @@
-function generateIngredientsList(ingredients, units, index = 1, isEditing = false, currentIngredient = null) {
+function generateIngredientsListEdit(ingredient, units, index, allIngredients) {
   return `
     <div class="form-group ingredients-form-group" data-index="${index}">
       <div class="form-field">
         <label for="ingredients-${index}" class="form-label">Ingredients:</label>
         <select id="ingredients-${index}" name="ingredients" class="form-input" required>
-          <option value="" disabled ${isEditing ? '' : 'selected'}>${
-    isEditing ? 'Select Ingredient' : ingredients[1].name
-  }</option>
-          ${
-            isEditing
-              ? ingredients
-                  .map(
-                    (ingredient) => `
-              <option value="${ingredient.id}" ${currentIngredient.name === ingredient.name ? 'selected' : ''}>
-                ${ingredient.name}
-              </option>`
-                  )
-                  .join('')
-              : ingredients.map((ingredient) => `<option value="${ingredient.id}">${ingredient.name}</option>`).join('')
-          }
+          <option value="" disabled>Select Ingredient</option>
+          ${allIngredients
+            .map(
+              (currentIngredient) => `
+            <option value="${currentIngredient.id}"
+              ${currentIngredient.name === ingredient.name ? 'selected' : ''}>
+              ${currentIngredient.name}
+            </option>`
+            )
+            .join('')}
         </select>
       </div>
       <div class="form-field">
@@ -30,15 +25,14 @@ function generateIngredientsList(ingredients, units, index = 1, isEditing = fals
             type="number"
             class="form-input form-input-quantity"
             placeholder="1"
-            value="${isEditing ? currentIngredient.amount : ''}"
-            min="1"
+            value="${ingredient.amount}"
             required
           />
           <select id="unit-${index}" name="unit" class="form-input form-input-unit">
             ${units
               .map(
                 (unit) => `
-              <option value="${unit}" ${isEditing && unit === currentIngredient.amountType ? 'selected' : ''}>
+              <option value="${unit}" ${unit === ingredient.amountType ? 'selected' : ''}>
                 ${unit}
               </option>`
               )
@@ -50,27 +44,12 @@ function generateIngredientsList(ingredients, units, index = 1, isEditing = fals
   `;
 }
 
-function addNewIngredientEventListener(ingredients, units) {
-  const addIngredientLink = document.querySelector('.add-ingredient-link');
-
-  addIngredientLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    const ingredientsContainers = document.querySelectorAll('.ingredients-form-group');
-    const lastIngredientsContainer = ingredientsContainers[ingredientsContainers.length - 1];
-    const ingredientCount = ingredientsContainers.length + 1;
-    lastIngredientsContainer.insertAdjacentHTML(
-      'afterEnd',
-      generateIngredientsList(ingredients, units, ingredientCount)
-    );
-  });
-}
-
-function AddRecipeModal(ingredients, units) {
+export default function EditRecipeModal(recipe, allIngredients, units, ingredients) {
   return `
-    <div class="modal addRecipe-modal">
+    <div class="modal editRecipe-modal">
       <div class="modal-body">
         <button class="button modal-close-button" aria-label="Close"></button>
-        <h2 class="modal-title">ADDING NEW RECIPE</h2>
+        <h2 class="modal-title">EDIT RECIPE</h2>
         <form class="modal-form">
           <div class="form-group">
             <div class="form-field">
@@ -80,7 +59,7 @@ function AddRecipeModal(ingredients, units) {
                 id="recipe-name"
                 name="recipe-name"
                 class="form-input"
-                placeholder="Name"
+                value="${recipe.name}"
                 required
               />
             </div>
@@ -91,7 +70,7 @@ function AddRecipeModal(ingredients, units) {
                 id="cooking-time"
                 name="cooking-time"
                 class="form-input"
-                placeholder="15"
+                value="${recipe.cookingTime}"
                 required
               />
             </div>
@@ -103,16 +82,18 @@ function AddRecipeModal(ingredients, units) {
               name="description"
               rows="4"
               class="form-input description-input"
-              placeholder="Description description description"
-            ></textarea>
+              required
+            >${recipe.description}</textarea>
           </div>
-          ${generateIngredientsList(ingredients, units)}
+          ${ingredients
+            .map((ingredient, index) => generateIngredientsListEdit(ingredient, units, index + 1, allIngredients))
+            .join('')}
           <div class="modal-footer">
-            <div class="form-add-ingredient">
-              <a href="#" class="add-ingredient-link">+ Add ingredient</a>
+            <div class="form-edit-ingredient">
+              <a href="#" class="add-ingredient-link"> + Add ingredient</a>
             </div>
             <div class="form-submit">
-              <button type="submit" class="button button-add-recipe">ADD NEW RECIPE</button>
+              <button type="submit" class="button button-edit-recipe">EDIT RECIPE</button>
             </div>
           </div>
         </form>
@@ -120,5 +101,3 @@ function AddRecipeModal(ingredients, units) {
     </div>
   `;
 }
-
-export { AddRecipeModal, generateIngredientsList, addNewIngredientEventListener };
